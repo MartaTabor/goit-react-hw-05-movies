@@ -4,11 +4,14 @@ import css from './SharedHeader.module.css';
 
 export const SharedHeader = () => {
   return (
-    <div>
+    <div className={css.container}>
       <header className={css.header}>
-        <nav>
-          <Link className={css.link} to="/">
+        <nav className={css.navigation}>
+          <Link className={css.link} to="/" end>
             Home
+          </Link>
+          <Link className={css.link} to="/movies">
+            Movies
           </Link>
         </nav>
       </header>

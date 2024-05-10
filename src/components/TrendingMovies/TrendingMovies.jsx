@@ -1,7 +1,7 @@
-// // import PropTypes from 'prop-types';
 import { Link, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { fetchTrendingMovies } from '../TrendingMoviesFetch';
+import { fetchTrendingMovies } from '../../utilities/TrendingMoviesFetch';
+import css from './TrendingMovies.module.css';
 
 const TrendingMoviesList = () => {
   const location = useLocation();
@@ -21,10 +21,10 @@ const TrendingMoviesList = () => {
   }, []);
 
   return (
-    <ul>
+    <ul className={css.list}>
       {fetchedMovies.map(movie => (
-        <li key={movie.id}>
-          <Link to={movie.id} state={{ from: location }}>
+        <li className={css.item} key={movie.id}>
+          <Link className={css.link} to={movie.id} state={{ from: location }}>
             {movie.title || movie.name}
           </Link>
         </li>

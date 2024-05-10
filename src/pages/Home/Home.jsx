@@ -1,13 +1,13 @@
-// import { useEffect, useState } from 'react';
-// import { Link, useLocation } from 'react-router-dom';
-// import { fetchTrendingMovies } from 'components/TrendingMoviesFetch';
 import TrendingMoviesList from '../../components/TrendingMovies/TrendingMovies';
+import css from './Home.module.css';
 
 const Home = ({ fetchedMovies }) => {
   return (
     <main>
-      <h1>Trending Movies Today</h1>
-      <TrendingMoviesList fetchedMovies={fetchedMovies} />
+      <div className={css.container}>
+        <h1>Trending Movies Today</h1>
+        <TrendingMoviesList fetchedMovies={fetchedMovies} />
+      </div>
     </main>
   );
 };
