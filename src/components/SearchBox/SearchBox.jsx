@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import css from './SearchBox.module.css';
 
 export const SearchBox = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -22,9 +23,16 @@ export const SearchBox = () => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <input type="text" value={searchQuery} onChange={handleInputChange} />
-        <button type="submit">Search</button>
+      <form className={css.form} onSubmit={handleSubmit}>
+        <input
+          className={css.input}
+          type="text"
+          value={searchQuery}
+          onChange={handleInputChange}
+        />
+        <button className={css.button} type="submit">
+          Search
+        </button>
       </form>
     </div>
   );

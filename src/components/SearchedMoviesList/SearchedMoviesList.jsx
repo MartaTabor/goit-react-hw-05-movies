@@ -21,7 +21,6 @@ export const SearchedMoviesList = () => {
     try {
       const movies = await fetchMoviesByQuery(query);
       setMovies(movies);
-      console.log('Movies:', movies);
     } catch (error) {
       console.error('Error fetching movies:', error);
     }
