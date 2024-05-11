@@ -1,0 +1,16 @@
+.list {
+  list-style-type: none;
+  font-size: 20px;
+  padding: 0;
+  line-height: 1.5;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+}
+
+.link:hover,
+.link:active {
+  color: rgb(30, 131, 114);
+}
