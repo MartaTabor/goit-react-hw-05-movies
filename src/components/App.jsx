@@ -8,11 +8,12 @@ const Movies = lazy(() => import('../pages/Movies/Movies'));
 export const App = () => {
   return (
     <div>
-      <SharedHeader />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="movies" element={<Movies />} />
-        <Route path="*" element={<Home />} />
+        <Route path="/" element={<SharedHeader />}>
+          <Route path="/" element={<Home />} />
+          <Route path="movies" element={<Movies />} />
+          <Route path="*" element={<Home />} />
+        </Route>
       </Routes>
     </div>
   );

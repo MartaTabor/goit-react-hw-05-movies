@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import { Outlet, Link } from 'react-router-dom';
+import { Outlet, NavLink } from 'react-router-dom';
 import css from './SharedHeader.module.css';
 
 export const SharedHeader = () => {
@@ -7,12 +7,12 @@ export const SharedHeader = () => {
     <div className={css.container}>
       <header className={css.header}>
         <nav className={css.navigation}>
-          <Link className={css.link} to="/" end>
+          <NavLink className={css.link} to="/" end>
             Home
-          </Link>
-          <Link className={css.link} to="/movies">
+          </NavLink>
+          <NavLink className={css.link} to="/movies">
             Movies
-          </Link>
+          </NavLink>
         </nav>
       </header>
       <Suspense fallback={<div>Loading page...</div>}>

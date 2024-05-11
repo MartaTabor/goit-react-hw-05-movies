@@ -27,8 +27,9 @@
   font-weight: 500;
 }
 
-.link:active,
-.link:hover {
+.link:focus,
+.link:hover,
+.link:active {
   color: white;
   background-color: rgb(30, 131, 114);
 }
