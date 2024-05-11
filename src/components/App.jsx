@@ -4,14 +4,17 @@ import { SharedHeader } from './SharedHeader/SharedHeader';
 
 const Home = lazy(() => import('../pages/Home/Home'));
 const Movies = lazy(() => import('../pages/Movies/Movies'));
+const MovieCard = lazy(() => import('../pages/MovieCard/MovieCard'));
 
 export const App = () => {
   return (
     <div>
       <Routes>
         <Route path="/" element={<SharedHeader />}>
-          <Route path="/" element={<Home />} />
-          <Route path="movies" element={<Movies />} />
+          <Route index element={<Home />} />
+          <Route path="movies" element={<Movies />}>
+            <Route path="movies/:movieId" element={<MovieCard />} />
+          </Route>
           <Route path="*" element={<Home />} />
         </Route>
       </Routes>

@@ -32,7 +32,11 @@ export const SearchedMoviesList = () => {
       <ul className={css.list}>
         {movies.map(movie => (
           <li className={css.item} key={movie.id}>
-            <Link className={css.link} to={movie.id} state={{ from: location }}>
+            <Link
+              className={css.link}
+              to={`/movies/${movie.id}`}
+              state={{ from: location }}
+            >
               {movie.title || movie.name}
             </Link>
           </li>
