@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { useParams, NavLink } from 'react-router-dom';
+import { useEffect, useState, Suspense } from 'react';
+import { useParams, NavLink, Outlet } from 'react-router-dom';
 import { fetchMovieDetails } from 'utilities/MovieDetailsFetch';
 import { PageNotFound } from 'components/PageNotFound/PageNotFound';
 
@@ -57,6 +57,9 @@ export const MovieDetails = () => {
         <NavLink to="cast">Cast</NavLink>
         <NavLink to="reviews">Reviews</NavLink>
       </nav>
+      <Suspense fallback={<div>Loading subpage...</div>}>
+        <Outlet />
+      </Suspense>
     </div>
   );
 };
