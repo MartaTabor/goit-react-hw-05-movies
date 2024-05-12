@@ -1,12 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchCast } from 'utilities/CastFetch';
-import { PageNotFound } from 'components/PageNotFound/PageNotFound';
 
 const Cast = () => {
   const { movieId } = useParams();
   const [movieCast, setMovieCast] = useState([]);
-  const [error, setError] = useState(false);
   const defaultImg =
     'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700';
 
@@ -18,15 +16,10 @@ const Cast = () => {
         console.log('Cast:', castData);
       } catch (error) {
         console.error('Eror fetching cast data:', error);
-        setError(true);
       }
     };
     fetchCastData();
   }, [movieId]);
-
-  if (error) {
-    return <PageNotFound />;
-  }
 
   return (
     <ul>
