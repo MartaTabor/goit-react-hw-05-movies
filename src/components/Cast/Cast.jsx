@@ -42,7 +42,10 @@ const Cast = () => {
             width={150}
             alt={person.name}
           />
-          <p>In the movie as: {person.character}</p>
+          <p>
+            In the movie as:{' '}
+            {person.character === '' ? 'unknown' : person.character}
+          </p>
         </li>
       ))}
     </ul>
