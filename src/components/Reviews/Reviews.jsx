@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchReviews } from 'utilities/ReviewsFetch';
+import css from './Reviews.module.css';
 
 const Reviews = () => {
   const { movieId } = useParams();
@@ -20,12 +21,12 @@ const Reviews = () => {
   }, [movieId]);
 
   return (
-    <ul>
+    <ul className={css.list}>
       {!movieReviews ||
         (movieReviews.length === 0 && <div>There is no reviews yet.</div>)}
       {movieReviews.map(review => (
-        <li key={review.id}>
-          <h3>Username: {review.author}</h3>
+        <li className={css.item} key={review.id}>
+          <h3>Author: {review.author}</h3>
           <p>{review.content}</p>
         </li>
       ))}

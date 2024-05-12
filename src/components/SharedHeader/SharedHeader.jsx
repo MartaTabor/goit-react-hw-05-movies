@@ -7,10 +7,17 @@ export const SharedHeader = () => {
     <div className={css.container}>
       <header className={css.header}>
         <nav className={css.navigation}>
-          <NavLink className={css.link} to="/" end>
+          <NavLink
+            className={navData => (navData.isActive ? css.active : css.link)}
+            to="/"
+            end
+          >
             Home
           </NavLink>
-          <NavLink className={css.link} to="/movies">
+          <NavLink
+            className={navData => (navData.isActive ? css.active : css.link)}
+            to="/movies"
+          >
             Movies
           </NavLink>
         </nav>

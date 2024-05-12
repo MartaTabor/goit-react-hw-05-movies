@@ -1,0 +1,31 @@
+.list {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.item {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  -webkit-box-shadow: 8px 8px 26px -14px rgba(66, 68, 90, 1);
+  -moz-box-shadow: 8px 8px 26px -14px rgba(66, 68, 90, 1);
+  box-shadow: 8px 8px 26px -14px rgba(66, 68, 90, 1);
+}
+
+.role {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.role_span {
+  font-weight: 500;
+}
+
+.role_name {
+  text-align: center;
+}

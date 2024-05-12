@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchCast } from 'utilities/CastFetch';
+import css from './Cast.module.css';
 
 const Cast = () => {
   const { movieId } = useParams();
@@ -22,9 +23,9 @@ const Cast = () => {
   }, [movieId]);
 
   return (
-    <ul>
+    <ul className={css.list}>
       {movieCast.map(person => (
-        <li key={person.id}>
+        <li className={css.item} key={person.id}>
           <h3>{person.name}</h3>
           <img
             src={
@@ -35,9 +36,11 @@ const Cast = () => {
             width={150}
             alt={person.name}
           />
-          <p>
-            In the movie as:{' '}
-            {person.character === '' ? 'unknown' : person.character}
+          <p className={css.role}>
+            <span className={css.role_span}>Role:</span>{' '}
+            <span className={css.role_name}>
+              {person.character === '' ? 'unknown' : person.character}
+            </span>
           </p>
         </li>
       ))}
