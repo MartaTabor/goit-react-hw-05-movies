@@ -41,7 +41,10 @@ export const MovieDetails = () => {
       <h3>Overview</h3>
       <p>{movieDetails.overview}</p>
       <h3>Genres</h3>
-      {/* <p>{movieDetails.genres.map(genre => genre.name).join(', ')}</p> */}
+      <p>
+        {movieDetails.genres &&
+          movieDetails.genres.map(genre => genre.name).join(', ')}
+      </p>
       <h3>Additional Details</h3>
       <nav>
         <NavLink to="cast">Cast</NavLink>
