@@ -30,6 +30,7 @@ export const SearchBox = () => {
       <form className={css.form} onSubmit={handleSubmit}>
         <input
           className={css.input}
+          placeholder="Search Movie"
           type="text"
           value={searchQuery}
           onChange={handleInputChange}

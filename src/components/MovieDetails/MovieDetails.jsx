@@ -19,7 +19,6 @@ export const MovieDetails = () => {
       try {
         const details = await fetchMovieDetails(movieId);
         setMovieDetails(details.data);
-        console.log('Movie:', details);
       } catch (error) {
         console.error('Error fetching movie details:', error);
         setError(true);
@@ -38,9 +37,7 @@ export const MovieDetails = () => {
 
   return (
     <div>
-      <BackLink to={backLinkHref}>
-        Back to Movies
-      </BackLink>
+      <BackLink to={backLinkHref}>Back to Movies</BackLink>
       <div className={css.container}>
         <img
           src={

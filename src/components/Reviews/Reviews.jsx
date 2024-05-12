@@ -12,7 +12,6 @@ const Reviews = () => {
       try {
         const reviewsData = await fetchReviews(movieId);
         setMovieReviews(reviewsData.data.results);
-        console.log('Reviews:', reviewsData);
       } catch (error) {
         console.error('Eror fetching cast data:', error);
       }
