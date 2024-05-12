@@ -13,8 +13,12 @@ export const SearchBox = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    setSearchParams({ query: searchQuery });
-    setSearchQuery('');
+    if (searchQuery.trim() === '') {
+      alert('Please enter a search phrase!');
+    } else {
+      setSearchParams({ query: searchQuery });
+      setSearchQuery('');
+    }
   };
 
   const handleInputChange = e => {

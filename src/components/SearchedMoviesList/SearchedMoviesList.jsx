@@ -8,6 +8,7 @@ export const SearchedMoviesList = () => {
   const [searchParams] = useSearchParams();
   const query = searchParams.get('query');
   const location = useLocation();
+  const [noResults, setNoResults] = useState(false);
 
   useEffect(() => {
     if (query) {
@@ -20,7 +21,12 @@ export const SearchedMoviesList = () => {
   const fetchMovies = async query => {
     try {
       const movies = await fetchMoviesByQuery(query);
-      setMovies(movies);
+      if (movies.length === 0) {
+        setNoResults(true);
+      } else {
+        setNoResults(false);
+        setMovies(movies);
+      }
     } catch (error) {
       console.error('Error fetching movies:', error);
     }
@@ -29,6 +35,7 @@ export const SearchedMoviesList = () => {
   return (
     <div>
       {query && <h2>Search Results:</h2>}
+      {noResults && <p>No matching movies in our database.</p>}
       <ul className={css.list}>
         {movies.map(movie => (
           <li className={css.item} key={movie.id}>
