@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react';
 import { useParams, NavLink } from 'react-router-dom';
 import { fetchMovieDetails } from 'utilities/MovieDetailsFetch';
+import { PageNotFound } from 'components/PageNotFound/PageNotFound';
 
 export const MovieDetails = () => {
   const defaultImg =
     '<https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700>';
   const { movieId } = useParams();
   const [movieDetails, setMovieDetails] = useState([]);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     const fetchDetails = async () => {
@@ -16,6 +18,7 @@ export const MovieDetails = () => {
         console.log('Movie:', details);
       } catch (error) {
         console.error('Error fetching movie details:', error);
+        setError(true);
       }
     };
     fetchDetails();
@@ -23,6 +26,10 @@ export const MovieDetails = () => {
 
   if (!movieDetails) {
     return <div>Loading page...</div>;
+  }
+
+  if (error) {
+    return <PageNotFound />;
   }
 
   return (
