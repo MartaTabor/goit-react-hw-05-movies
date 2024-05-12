@@ -1,7 +1,8 @@
 import { useEffect, useState, Suspense } from 'react';
-import { useParams, NavLink, Outlet } from 'react-router-dom';
+import { useParams, NavLink, Outlet, useLocation } from 'react-router-dom';
 import { fetchMovieDetails } from 'utilities/MovieDetailsFetch';
 import { PageNotFound } from 'components/PageNotFound/PageNotFound';
+import { BackLink } from 'components/BackLink/BackLink';
 import css from './MovieDetails.module.css';
 
 export const MovieDetails = () => {
@@ -10,6 +11,8 @@ export const MovieDetails = () => {
   const { movieId } = useParams();
   const [movieDetails, setMovieDetails] = useState([]);
   const [error, setError] = useState(false);
+  const location = useLocation();
+  const backLinkHref = location.state?.from ?? '/movies';
 
   useEffect(() => {
     const fetchDetails = async () => {
@@ -35,6 +38,9 @@ export const MovieDetails = () => {
 
   return (
     <div>
+      <BackLink to={backLinkHref}>
+        Back to Movies
+      </BackLink>
       <div className={css.container}>
         <img
           src={
