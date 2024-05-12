@@ -5,7 +5,7 @@ import { PageNotFound } from 'components/PageNotFound/PageNotFound';
 
 export const MovieDetails = () => {
   const defaultImg =
-    '<https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700>';
+    'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700';
   const { movieId } = useParams();
   const [movieDetails, setMovieDetails] = useState([]);
   const [error, setError] = useState(false);
