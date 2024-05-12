@@ -21,6 +21,8 @@ const Reviews = () => {
 
   return (
     <ul>
+      {!movieReviews ||
+        (movieReviews.length === 0 && <div>There is no reviews yet.</div>)}
       {movieReviews.map(review => (
         <li key={review.id}>
           <h3>Username: {review.author}</h3>
