@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import TrendingMoviesList from '../../components/TrendingMovies/TrendingMovies';
 import css from './Home.module.css';
 
@@ -10,6 +12,10 @@ const Home = ({ fetchedMovies }) => {
       </div>
     </main>
   );
+};
+
+Home.propTypes = {
+  fetchedMovies: PropTypes.array,
 };
 
 export default Home;
