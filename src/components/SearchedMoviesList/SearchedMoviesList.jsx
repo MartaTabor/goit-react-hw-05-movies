@@ -35,7 +35,7 @@ export const SearchedMoviesList = () => {
   return (
     <div>
       {query && <h2>Search Results:</h2>}
-      {noResults && <p>No matching movies in our database.</p>}
+      {noResults && query && <p>No matching movies in our database.</p>}
       <ul className={css.list}>
         {movies.map(movie => (
           <li className={css.item} key={movie.id}>
