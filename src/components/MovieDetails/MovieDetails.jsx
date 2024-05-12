@@ -6,18 +6,19 @@ export const MovieDetails = () => {
   const defaultImg =
     '<https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700>';
   const { movieId } = useParams();
-  const [movieDetails, setMovieDetails] = useState(null);
+  const [movieDetails, setMovieDetails] = useState({});
 
   useEffect(() => {
-    if (movieId) {
-      fetchMovieDetails(movieId)
-        .then(details => {
-          setMovieDetails(details);
-        })
-        .catch(error => {
-          console.error('Error fetching movie details:', error);
-        });
-    }
+    const fetchDetails = async movieId => {
+      try {
+        const details = await fetchMovieDetails();
+        setMovieDetails(details.data.results);
+        console.log('Movie:', details);
+      } catch (error) {
+        console.error('Error fetching movie details:', error);
+      }
+    };
+    fetchDetails();
   }, [movieId]);
 
   if (!movieDetails) {
@@ -26,24 +27,30 @@ export const MovieDetails = () => {
 
   return (
     <div>
-      <h2>{movieDetails.title || movieDetails.name}</h2>
-      <img
-        src={
-          movieDetails.poster_path
-            ? `https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`
-            : defaultImg
-        }
-        width={250}
-        alt="film poster"
-      />
-      <p>User Score: {movieDetails.popularity}</p>
-      <h3>Overview</h3>
-      <p>{movieDetails.overview}</p>
-      <h3>Genres</h3>
-      <p>{movieDetails.genres_name}</p>
-      <h3>Additional Details</h3>
-      <NavLink to="cast">Cast</NavLink>
-      <NavLink to="reviews">Reviews</NavLink>
+      {movieDetails && (
+        <>
+          <h2>{movieDetails.title || movieDetails.name}</h2>
+          <img
+            src={
+              movieDetails.poster_path
+                ? `https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`
+                : defaultImg
+            }
+            width={250}
+            alt="film poster"
+          />
+          <p>User Score: {movieDetails.vote_average}</p>
+          <h3>Overview</h3>
+          <p>{movieDetails.overview}</p>
+          <h3>Genres</h3>
+          <p>{movieDetails.genres}</p>
+          <h3>Additional Details</h3>
+          <nav>
+            <NavLink to="cast">Cast</NavLink>
+            <NavLink to="reviews">Reviews</NavLink>
+          </nav>
+        </>
+      )}
     </div>
   );
 };

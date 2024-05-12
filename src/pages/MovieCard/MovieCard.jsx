@@ -1,11 +1,11 @@
 import { MovieDetails } from 'components/MovieDetails/MovieDetails';
 import { useParams } from 'react-router-dom';
 
-const MovieCard = () => {
+const MovieCard = ({ movieDetails }) => {
   const { movieId } = useParams();
   return (
     <main>
-      <MovieDetails movieId={movieId} />
+      <MovieDetails movieId={movieId} movieDetails={movieDetails} />
     </main>
   );
 };
